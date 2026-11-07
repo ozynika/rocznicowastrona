@@ -1128,6 +1128,116 @@ body.screen-on-fire {
 @keyframes delikatnePulsowanie { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
 
    </style>
+
+<style>
+  .safe20-wrap {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .safe20-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  .safe20-door-button {
+  position: absolute;
+  left: 47%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  animation: safe20-pulse 2.2s ease-in-out infinite;
+}
+
+  .safe20-hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    max-width: 145px;
+    border: 0;
+    border-radius: 999px;
+    padding: 10px 15px;
+    background: #e889b5;
+    color: white;
+    font-size: clamp(11px, 1.5vw, 15px);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 12px #0004;
+    animation: safe20-pulse 2.2s ease-in-out infinite;
+  }
+
+  .safe20-hotspot:hover,
+  .safe20-door-button:hover {
+    filter: brightness(1.07);
+  }
+
+  @keyframes safe20-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.045); }
+  }
+
+  .safe20-rain {
+  position: absolute;
+  left: 29%;
+  top: 35%;
+  width: 21%;
+  height: 16%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+  clip-path: polygon(8% 0, 66% 13%, 37% 82%, 18% 78%, 18% 68%, 8% 63%);
+  background: repeating-linear-gradient(
+    105deg,
+    transparent 0 10px,
+    rgba(220, 240, 255, 0.65) 11px 12px,
+    transparent 13px 21px
+  );
+  background-size: 100% 21px;
+  animation: safe20-rainfall 0.7s linear infinite;
+  opacity: 0.75;
+}
+
+@keyframes safe20-rainfall {
+  from { background-position: 0 0; }
+  to { background-position: 0 21px; }
+}
+
+  .safe20-message {
+    display: none;
+    max-width: 750px;
+    margin: 18px auto;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: #fff0f7;
+    color: #5b3048;
+    font-size: 17px;
+    text-align: center;
+  }
+
+  .safe20-audio {
+    display: block;
+    width: min(420px, 90%);
+    margin: 22px auto 16px;
+  }
+
+  @media (max-width: 600px) {
+    .safe20-hotspot {
+      max-width: 105px;
+      padding: 7px 9px;
+      font-size: 10px;
+    }
+
+    .safe20-door-button {
+      max-width: 75%;
+      white-space: normal;
+    }
+  }
+</style>
+
 </head>
 
 <body>
@@ -1293,6 +1403,340 @@ body.screen-on-fire {
       </div>
     </section>
 
+    <section id="page18" class="page">
+  <style>
+    #page18.page {
+      box-sizing: border-box;
+      min-height: 100vh;
+      height: 100vh;
+      overflow-y: auto;
+      display: block;
+      position: relative;
+      padding: 34px 38px 22px 42px;
+      border-left: 84px solid #c62828;
+      background: #ffffff;
+      color: #111111;
+    }
+
+    #page18 .toc-inner {
+      box-sizing: border-box;
+      min-height: calc(100vh - 56px);
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #page18 .toc-heading {
+      margin: 0 0 24px;
+      color: #111111;
+      text-align: center;
+      font-size: 1.8rem;
+      letter-spacing: 0.06em;
+    }
+
+    #page18 .toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    #page18 .toc-row {
+      width: 100%;
+      min-height: 32px;
+      padding: 4px 2px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border: 0;
+      border-radius: 0;
+      background: transparent !important;
+      color: #111111;
+      font: inherit;
+      font-size: 1.08rem;
+      text-align: left;
+      cursor: pointer;
+      animation: tocGlow 2.2s ease-in-out infinite;
+    }
+
+    #page18 .toc-row:hover {
+      color: #8f1717;
+    }
+
+    #page18 .toc-name {
+      flex: 1;
+    }
+
+    #page18 .toc-number {
+      min-width: 30px;
+      text-align: right;
+      color: #111111;
+    }
+
+    #page18 .toc-skip-area {
+      margin-top: auto;
+      padding-top: 82px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #page18 .toc-skip {
+      animation: pulseBtn 1.8s infinite ease-in-out;
+    }
+
+    #page18 .toc-footer {
+      margin-top: 22px;
+      padding: 12px 8px;
+      background: rgba(198, 40, 40, 0.18);
+      color: #111111;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    @keyframes tocGlow {
+      0%, 100% {
+        text-shadow: 0 0 2px rgba(198, 40, 40, 0.2);
+        transform: scale(1);
+      }
+      50% {
+        text-shadow: 0 0 8px rgba(198, 40, 40, 0.42);
+        transform: scale(1.01);
+      }
+    }
+
+    @media (max-width: 600px) {
+      #page18.page {
+        padding: 26px 18px 18px 24px;
+        border-left-width: 54px;
+      }
+
+      #page18 .toc-heading {
+        font-size: 1.55rem;
+      }
+
+      #page18 .toc-row {
+        font-size: 1rem;
+      }
+    }
+  </style>
+
+  <div class="toc-inner">
+    <h1 class="toc-heading">SPIS TREŚCI</h1>
+
+    <div class="toc-list">
+      <button type="button" class="toc-row" onclick="showPage(2)">
+        <span class="toc-name">Nasze wspólne zdjęcie 🤳</span>
+        <span class="toc-number">3</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(3)">
+        <span class="toc-name">Nasza historia ❤️</span>
+        <span class="toc-number">4</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showCounter()">
+        <span class="toc-name">Licznik czasu razem 💗</span>
+        <span class="toc-number">5</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(5)">
+        <span class="toc-name">Skaner przystojności 🤖</span>
+        <span class="toc-number">6</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(6)">
+        <span class="toc-name">Błąd systemu ❌</span>
+        <span class="toc-number">7</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(7)">
+        <span class="toc-name">Licznik czasu razem ❤️</span>
+        <span class="toc-number">8</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(8)">
+        <span class="toc-name">Na ile % Cię kocham? 🤔</span>
+        <span class="toc-number">9</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(9); initFishGame()">
+        <span class="toc-name">Akwarium 🦈</span>
+        <span class="toc-number">10</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(10); initMemoryGame()">
+        <span class="toc-name">Nasze Wspomnienia 📸</span>
+        <span class="toc-number">11</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(11)">
+        <span class="toc-name">Wiersze ♡</span>
+        <span class="toc-number">12</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(12)">
+        <span class="toc-name">Quiz ❓</span>
+        <span class="toc-number">13</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(13)">
+        <span class="toc-name">Misio z prezentem 🧸🎁</span>
+        <span class="toc-number">14</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(14)">
+        <span class="toc-name">Kapsuła czasu ⏳</span>
+        <span class="toc-number">15</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(15)">
+        <span class="toc-name">Podróż przez Układ Słoneczny 🚀</span>
+        <span class="toc-number">16</span>
+      </button>
+
+      <button type="button" class="toc-row" onclick="showPage(19)">
+    <span class="toc-name">Mandacik za przekroczenie piękności 📄</span>
+    <span class="toc-number">17</span>
+</button>
+
+<button type="button" class="toc-row" onclick="showPage(20)">
+    <span class="toc-name">Bezpieczna Przystań 💚</span>
+    <span class="toc-number">18</span>
+</button>
+
+<button type="button" class="toc-row" onclick="showPage(21)">
+    <span class="toc-name">Dziękuję, że jesteś ⚞🎀・◦・⚟</span>
+    <span class="toc-number">19</span>
+</button>
+
+<button type="button" class="toc-row" onclick="showPage(22)">
+    <span class="toc-name">Kocham Cię ❤️</span>
+    <span class="toc-number">20</span>
+</button>
+
+<button type="button" class="toc-row" onclick="showPage(23)">
+    <span class="toc-name">Popatrz, jak ja Cię widzę 👀</span>
+    <span class="toc-number">21</span>
+</button>
+
+<button type="button" class="toc-row" onclick="showPage(24)">
+    <span class="toc-name">Wybierz, co dziś chcesz zjeść 🍽️</span>
+    <span class="toc-number">22</span>
+</button>
+
+<button type="button" class="toc-row" onclick="showPage(25)">
+    <span class="toc-name">Zobacz Tik-Toka 🎶</span>
+    <span class="toc-number">23</span>
+</button>
+
+<button type="button" class="toc-row" onclick="showPage(26)">
+    <span class="toc-name">Zobacz drugiego Tik-Toka 🎶</span>
+    <span class="toc-number">24</span>
+</button>
+
+<button type="button" class="toc-row" onclick="showPage(27)">
+    <span class="toc-name">Zobacz trzeciego Tik-Toka 🎶</span>
+    <span class="toc-number">25</span>
+</button>
+
+<button type="button" class="toc-row" onclick="showPage(28)">
+    <span class="toc-name">Zobacz czwartego Tik-Toka 🎶</span>
+    <span class="toc-number">26</span>
+</button>
+
+<button type="button" class="toc-row" onclick="showPage(16)">
+    <span class="toc-name">Strona finałowa 🏆</span>
+    <span class="toc-number">27</span>
+</button>
+
+<div
+  aria-hidden="true"
+  style="margin: 20px 0; border-top: 2px dashed #d98cad;"
+  ></div>
+
+<button
+  type="button"
+  class="toc-row"
+  onclick="document.getElementById('secretPageMessage').style.display = 'flex'">
+
+  <span class="toc-name">Sekretna strona 🤫</span>
+  <span class="toc-number">28</span>
+</button>
+
+    </div>
+
+    <div class="toc-skip-area">
+      <button
+        type="button"
+        class="pink-button toc-skip"
+        onclick="showPage(2)"
+      >Pomiń spis treści</button>
+    </div>
+
+    <div class="toc-footer">rocznicowa strona</div>
+  </div>
+</section>
+
+</div>
+
+<div
+  id="secretPageMessage"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Sekretna strona"
+  onclick="this.style.display = 'none'"
+  style="
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100001;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgba(45, 20, 35, 0.28);
+  ">
+
+  <div
+    onclick="event.stopPropagation()"
+    style="
+      position: relative;
+      width: min(100%, 360px);
+      padding: 38px 32px 30px;
+      box-sizing: border-box;
+      border-radius: 22px;
+      background: #ffffff;
+      color: #30232b;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(50, 10, 30, 0.28);
+    "
+  >
+    <button
+      type="button"
+      aria-label="Zamknij"
+      onclick="document.getElementById('secretPageMessage').style.display = 'none'"
+      style="
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        border: 0;
+        background: transparent;
+        color: #30232b;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+      "
+    >
+      &times;
+    </button>
+
+    <p style="margin: 0; font-size: 20px; font-weight: bold; line-height: 1.4;">
+      Musisz wykonać zadanie, aby odblokować tę stronę 🔒<br>Brak klucza 🗝️
+    </p>
+  </div>
+</div>
+
     <!-- STRONA 2: ZDJĘCIE -->
 
     <section id="page2" class="page">
@@ -1326,10 +1770,10 @@ body.screen-on-fire {
                 Twoja przeglądarka nie obsługuje odtwarzacza.
             </audio>
       <button class="pink-button" onclick="showPage(3)" style="animation: pulseBtn 1.8s infinite ease-in-out;">
-        Zobacz naszą historię
+        Zobacz naszą historię ➔
       </button>
 
-      </div>
+      
 
     </section>
 
@@ -1507,7 +1951,7 @@ body.screen-on-fire {
 
 
       <button class="white-button" onclick="showCounter()" style="animation: pulseBtn 1.8s infinite ease-in-out;">
-        Zobacz licznik czasu razem
+        Zobacz licznik czasu razem ➔
       </button>
 
     </section>
@@ -1592,7 +2036,7 @@ body.screen-on-fire {
     </div>
 
     <button class="pulse-pink-btn" onclick="showPage(7)">
-        Zobacz licznik czasu razem
+        Zobacz licznik czasu razem ➔
     </button>
 </div>
   <section id="page7" class="page" style="overflow-y: auto; max-height: 100vh; padding: 40px 15px; background: radial-gradient(circle at 50% 30%, rgba(255, 105, 180, 0.22) 0%, rgba(15, 5, 12, 0.95) 60%, #050204 100%);">
@@ -1659,7 +2103,7 @@ body.screen-on-fire {
         </div> 
         
         <button onclick="showPage(8)" class="love-meter-btn" style="animation: pulseBtn 1.8s infinite ease-in-out;">
-    Zobacz na ile % Cię kocham
+    Zobacz na ile % Cię kocham ➔
 </button>
 </section>
 <section id="page8" class="page" style="
@@ -1745,7 +2189,7 @@ body.screen-on-fire {
 
     <!-- Przycisk do minigry w stylu różowej pastylki -->
         <button id="btn-to-game" onclick="showPage(9); initFishGame();" style="display: none; position: relative; z-index: 10; margin-top: 25px; padding: 12px 28px; background: #00b4d8; color: #ffffff; font-weight: 700; font-size: 1rem; border: none; border-radius: 999px; box-shadow: 0 8px 20px rgba(0, 180, 216, 0.45); cursor: pointer; transition: transform 0.2s ease; animation: pulseBtn 1.8s infinite ease-in-out;">
-            Zagraj w Akwarium Miłości 💖
+            Zagraj w Akwarium Miłości 💖 ➔
         </button>
 </section>
 <section id="page9" class="page" style="position: relative; overflow: hidden; min-height: 100vh; flex-direction: column; align-items: center; justify-content: flex-start; padding: 20px; user-select: none; background: linear-gradient(180deg, #0f2b48 0%, #1a5378 45%, #0b3c5d 80%, #061c30 100%);">
@@ -1766,7 +2210,7 @@ body.screen-on-fire {
         <h3 style="font-size: 2rem; margin-bottom: 12px; color: #ff6b8b;">Gratulacje! 🌊❤️</h3>
         <p style="margin-bottom: 20px;">Udało Ci się zebrać 30/30 punktów.</p>
        <button onclick="showPage(10); initMemoryGame();" style="background: linear-gradient(135deg, #ff4d88, #ff85a2); color: white; border: none; padding: 14px 32px; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 77, 136, 0.4); transition: transform 0.2s ease; animation: pulseBtn 1.8s infinite ease-in-out;">
-                Zagraj w Memory
+                Zagraj w Memory ➔
             </button>
     </div>
 </section>
@@ -1793,7 +2237,7 @@ body.screen-on-fire {
     <div id="memory-win-banner" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(25, 20, 35, 0.95); border: 2px solid #ff4d88; padding: 25px; border-radius: 20px; text-align: center; z-index: 999999; box-shadow: 0 10px 30px rgba(0,0,0,0.7); max-width: 320px; width: 85%; color: white;">
       <h3 style="font-size: 1.6rem; color: #ff6b8b; margin-bottom: 10px;">Gratulacje!</h3>
       <p style="font-size: 1.05rem; line-height: 1.5; margin-bottom: 20px;">Udało Ci się przejść Memory.<br>Nagroda to porządny buziak</p>
-      <button onclick="showPage(11)" style="background: linear-gradient(135deg, #ff4d88, #ff85a2); color: white; border: none; padding: 12px 28px; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; display: inline-block; animation: delikatnePulsowanie 2.5s ease-in-out infinite;">Zobacz moje wiersze</button>
+      <button onclick="showPage(11)" style="background: linear-gradient(135deg, #ff4d88, #ff85a2); color: white; border: none; padding: 12px 28px; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; display: inline-block; animation: delikatnePulsowanie 2.5s ease-in-out infinite;">Zobacz moje wiersze ➔</button>
     </div>
 
     <!-- Okno przegranej -->
@@ -1889,7 +2333,7 @@ body.screen-on-fire {
 
     <!-- Przycisk przejścia do ostatniej strony -->
     
-    <button onclick="showPage(12)" style="background: linear-gradient(135deg, #ff4d88, #ff85a2); color: white; border: none; padding: 12px 28px; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; display: inline-block;">Rozwiąż Quiz ❤️‍🩹</button>
+    <button onclick="showPage(12)" style="background: linear-gradient(135deg, #ff4d88, #ff85a2); color: white; border: none; padding: 12px 28px; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; display: inline-block;">Rozwiąż Quiz ❤️‍🩹 ➔</button>
 
     <!-- Modal z otwartym listem -->
     <div id="poem-modal" class="poem-modal" onclick="closePoem(event)">
@@ -2204,7 +2648,7 @@ body.screen-on-fire {
 
     <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
       <button class="quiz-nav-btn" id="reviewBtn" style="background: #ffffff; color: #c9184a; border: 2px solid #c9184a; animation: pulseBtn 1.8s infinite ease-in-out;" onclick="toggleAnswersReview()">Zobacz poprawne odpowiedzi 🔍</button>
-      <button class="quiz-nav-btn" id="actionPrimaryBtn" style="animation: pulseBtn 1.8s infinite ease-in-out;" onclick="handlePrimaryAction()">Dalej</button>
+      <button class="quiz-nav-btn" id="actionPrimaryBtn" style="animation: pulseBtn 1.8s infinite ease-in-out;" onclick="handlePrimaryAction()">Dalej ➔</button>
     </div>
   </div>
 
@@ -2230,7 +2674,7 @@ body.screen-on-fire {
        Otwórz prezent od misia 🎁
     </button>
     <button onclick="showPage(14)" style="background: #ff4d6d; color: #ffffff; border: none; padding: 14px 20px; border-radius: 25px; font-weight: bold; font-size: 16px; cursor: pointer; box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3); animation: pulseBtn 1.8s infinite ease-in-out;">
-      Przejdź dalej ➔
+      Zobacz kapsułe czasu ➔
     </button>
   </div>
 
@@ -2281,7 +2725,7 @@ body.screen-on-fire {
   <!-- PULSUJĄCY PRZYCISK DALEJ -->
   <div style="margin-top: 35px;">
     <button class="pulse-next-capsule" onclick="showPage(15)" style="background: #ffffff; color: #b8860b; border: 2px solid #f6e05e; border-radius: 50px; padding: 12px 34px; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(246, 224, 94, 0.35);">
-      Przejdź dalej ➔
+      Zagraj w Układ Słoneczny ➔
     </button>
   </div>
 
@@ -2455,8 +2899,8 @@ body.screen-on-fire {
 
   <!-- Przycisk przejścia dalej (odblokowany po Neptunie) -->
   <div id="solarNextPageBtn" style="display: none; margin-top: 25px;">
-    <button onclick="showPage(16)" style="background: linear-gradient(135deg, #ff758c, #ff7eb3); color: white; border: none; padding: 14px 28px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);">
-      ? ➔
+    <button onclick="showPage(19)" style="background: linear-gradient(135deg, #ff758c, #ff7eb3); color: white; border: none; padding: 14px 28px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);">
+      Zobacz, za co zostałeś ukarany ➔
     </button>
   </div>
 
@@ -2468,6 +2912,35 @@ body.screen-on-fire {
       </div>
     </div>
   </div>
+
+</section>
+
+<!-- STRONA 17: MANDACIK ZA PRZEKROCZENIE PIĘKNOŚCI -->
+<section id="page19" class="page" style="display: none; min-height: 100vh; box-sizing: border-box; padding: 8px 20px 30px; text-align: center; background: radial-gradient(circle at top, #fff5fa, #ffd6e7 55%, #f7a8c7); color: #8a3157;">
+
+    <h1 style="margin: 0px 0 10px; font-size: clamp(25px, 6vw, 36px);">
+        Mandacik za<br>przekroczenie piękności 💗
+    </h1>
+
+    <p style="margin: 0 0 22px; font-size: 18px;">
+        Zostajesz ukarany za bycie<br>zdecydowanie za pięknym 💌
+    </p>
+
+    <div style="max-width: 1100px; margin: 0 auto 20px;">
+        <img src="nasze16.jpg" alt="Nasze wspólne zdjęcie" style="display: block; width: 100%; max-height: 78vh; object-fit: contain; margin: 0 auto; border: 5px solid white; border-radius: 22px; box-shadow: 0 8px 24px rgba(160, 60, 100, 0.22);">
+    </div>
+
+<div style="margin: 25px auto 20px; text-align: center; width: 100%; max-width: 320px;">
+  <p style="color: #000000; font-size: 14px; margin-bottom: 8px; opacity: 0.9;">
+    Mandacik- Akcent, Zenon Martyniuk i Łobuzy🎵
+  </p>
+  <audio controls style="width: 100%; border-radius: 30px;">
+    <source src="muzyka2.mp3" type="audio/mpeg">
+    Twoja przeglądarka nie obsługuje odtwarzania audio.
+  </audio>
+</div>
+
+<button type="button" class="pink-button" onclick="showPage(20)" style="display: block; margin: 20px auto 0; animation: pulseBtn 1.8s infinite ease-in-out;">Zobacz Bezpieczną Przystań ➔</button>
 
 </section>
 
@@ -2493,7 +2966,7 @@ body.screen-on-fire {
 </section>
 <section id="page17" class="page" style="display: none; min-height: 100vh; box-sizing: border-box; padding: 30px 16px; background: radial-gradient(circle at top, #ffd6e4 0%, #ffe8ef 48%, #fff0f5 100%); text-align: center;">
   <h1 style="margin: 12px 0; color: #d32f2f;">Nasza tajna strona ❤️</h1>
-  <p style="margin: 0 0 25px; font-size: 18px; color: #fff; text-shadow: 0 0 8px rgba(255, 105, 180, 0.95), 0 0 18px rgba(255, 105, 180, 0.8), 0 0 32px rgba(255, 105, 180, 0.65);">Udało Ci się złapać wszystkie emotki</p>
+  <p style="margin: 0 0 25px; font-size: 18px; color: #fff; text-shadow: 0 0 8px rgba(255, 105, 180, 0.95), 0 0 18px rgba(255, 105, 180, 0.8), 0 0 32px rgba(255, 105, 180, 0.65);">Udało Ci się złapać wszystkie emotki!</p>
 
   <div style="position: relative; width: min(86vw, 600px); height: clamp(280px, 45vh, 430px); margin: 45px auto; overflow: hidden; background: #fff; border: 2px solid #eadde0; border-radius: 14px; box-shadow: 0 12px 30px rgba(100, 40, 55, 0.16);">
     <div style="position: absolute; inset: 0 0 auto; height: 60%; background: #fff0f3; clip-path: polygon(0 0, 100% 0, 50% 100%);"></div>
@@ -2504,7 +2977,7 @@ body.screen-on-fire {
     <button type="button" onclick="closeSecretLetter()" style="position: sticky; top: 0; z-index: 2; display: block; margin: 0 0 12px auto; padding: 8px 12px; border: 0; border-radius: 12px; background: #f7d6df; cursor: pointer;">✕ Zamknij list</button>
   <p>Powiedziałabym, że go kocham, ale to słowo wyraża zdecydowanie za mało w porównaniu do tego, jakimi uczuciami go darzę. Może…? Kocham go najbardziej na świecie — nie, to też za mało. Kocham go najbardziej, jak potrafię.</p>
 
-<p>Gdy patrzę na niego, widzę najwspanialszego człowieka, z którym chciałabym spędzić resztę swojego życia, choć z nim to życie będzie krótką chwilą. Każdy czas spędzony z nim można policzyć w sekundach, a bez niego — w latach. Boję się jednak, że kiedyś albo straci do mnie jakiekolwiek uczucia, albo znajdzie kogoś lepszego.</p>
+<p>Gdy patrzę na niego, widzę najwspanialszego człowieka, z którym chciałabym spędzić resztę swojego życia, choć z nim to życie będzie krótką chwilą. Każdy czas spędzony z nim można policzyć w sekundach, a bez niego - w latach. Boję się jednak, że kiedyś albo straci do mnie jakiekolwiek uczucia, albo znajdzie kogoś lepszego.</p>
 
 <p>Wiadomo, zniosłabym to, choć bardziej prawdopodobne jest to, że nie, bo jak miałabym sobie poradzić z utratą osoby, która znaczy dla mnie więcej niż wszystko? Czy puściłabym go wolno? Tak, bo to byłaby jego decyzja.</p>
 
@@ -2519,6 +2992,985 @@ body.screen-on-fire {
 </div>
 
 </section>
+
+<section id="page20" class="page" style="display: none; min-height: 100vh; padding: 25px 15px; box-sizing: border-box; text-align: center;">
+
+  <div id="safe20DoorView">
+    <h1>Bezpieczna Przystań</h1>
+    <p>Możesz tu na chwilę odpocząć.</p>
+
+    <div class="safe20-wrap">
+      <img class="safe20-photo" src="nasze17.jpg" alt="Drzwi do Bezpiecznej Przystani">
+      <button type="button" class="pink-button safe20-door-button" onclick="openSafe20Room()">
+        Wejdź, jestem tutaj
+      </button>
+    </div>
+  </div>
+
+  <div id="safe20RoomView" style="display: none;">
+    <h1>Czego potrzebujesz teraz najbardziej?</h1>
+
+    <div class="safe20-wrap">
+      <img class="safe20-photo" src="nasze18.jpg" alt="Pokój w Bezpiecznej Przystani">
+
+      <div class="safe20-rain" aria-hidden="true"></div>
+
+      <button type="button" class="safe20-hotspot"
+        style="left: 18%; top: 74%;"
+        onclick="showSafe20Message('hug')">Przytulenie</button>
+
+      <button type="button" class="safe20-hotspot"
+        style="left: 53%; top: 84%;"
+        onclick="showSafe20Message('kiss')">Buziak</button>
+
+      <button type="button" class="safe20-hotspot"
+        style="left: 77%; top: 58%;"
+        onclick="showSafe20Message('smile')">Uśmiech</button>
+
+      <button type="button" class="safe20-hotspot"
+        style="left: 70%; top: 22%;"
+        onclick="showSafe20Message('talk')">Rozmowa</button>
+
+      <button type="button" class="safe20-hotspot"
+        style="left: 54%; top: 48%;"
+        onclick="showSafe20Message('memory')">Przypomnienie</button>
+
+      <button type="button" class="safe20-hotspot"
+        style="left: 77%; top: 84%;"
+        onclick="showSafe20Message('calm')">Chwili spokoju</button>
+    </div>
+
+    <div id="safe20Message" class="safe20-message" aria-live="polite"></div>
+
+    <audio class="safe20-audio" controls preload="none">
+      <source src="muzyka3.mp3" type="audio/mpeg">
+      Twoja przeglądarka nie obsługuje odtwarzania audio.
+    </audio>
+
+    <button type="button" class="pink-button safe20-next" onclick="showPage(21)">
+      Zobacz nas na poprawe humoru ➔
+    </button>
+  </div>
+
+</section>
+
+<section id="page21" class="page" style="
+  display: none;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 24px 18px;
+  text-align: center;
+  color: #fff4fa;
+  background: radial-gradient(ellipse at top, #56334d, #211923 75%);
+">
+  <span aria-hidden="true" style="position:absolute; top:12%; left:10%; font-size:30px; color:#ffc6df; opacity:.65;">♡</span>
+  <span aria-hidden="true" style="position:absolute; top:22%; right:9%; font-size:42px; color:#ffc6df; opacity:.55;">♥</span>
+  <span aria-hidden="true" style="position:absolute; bottom:15%; left:12%; font-size:38px; color:#ffc6df; opacity:.5;">♡</span>
+  <span aria-hidden="true" style="position:absolute; bottom:17%; right:13%; font-size:28px; color:#ffc6df; opacity:.65;">♥</span>
+
+  <div style="
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: calc(100vh - 48px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  ">
+    <h1 style="
+      margin: 0;
+      color: #fff4fa;
+      font-size: clamp(30px, 5vw, 48px);
+    ">
+      My 💕
+    </h1>
+
+    <video controls playsinline preload="metadata" style="
+      display: block;
+      width: min(100%, 1200px);
+      height: 76vh;
+      max-height: calc(100vh - 170px);
+      object-fit: contain;
+      background: #120e13;
+      border: 3px solid rgba(255, 198, 223, .75);
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .45);
+    ">
+      <source src="film1.mp4" type="video/mp4">
+      Twoja przeglądarka nie obsługuje odtwarzania filmu.
+    </video>
+
+    <p style="
+      margin: 0;
+      color: #ffc6df;
+      font-size: clamp(18px, 3vw, 24px);
+    ">
+      Dziękuję, że jesteś 
+    </p>
+  </div>
+
+<div style="text-align: center; margin-top: 24px;">
+  <button type="button" class="pink-button safe20-next" onclick="showPage(22)">
+    Kocham Cię ❤️ ➔
+  </button>
+</div>
+
+</section>
+
+<section id="page22" class="page" style="
+  display: none;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #fff0f6, #ffe1ec);
+  color: #742b4b;
+">
+  <div style="
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 18px 18px 8px;
+  ">
+    <h1 style="
+      flex: 0 0 auto;
+      margin: 8px 0 18px;
+      text-align: center;
+      color: #111;
+      font-size: clamp(20px, 4vw, 30px);
+    ">
+      Nie uda Ci się przewinąć do końca strony.<br>Nie dowiesz się, na ile procent Cię kocham.
+    </h1>
+
+    <div id="loveSroll" style="
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      text-align: center;
+      overscroll-behavior: contain;
+    ">
+      <div id="loveLines" style="
+        font-size: clamp(16px, 2.5vw, 21px);
+        line-height: 1.8;
+        white-space: pre-line;
+      "></div>
+    </div>
+
+    <div style="
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: center;
+      padding: 12px 0 max(8px, env(safe-area-inset-bottom));
+    ">
+      <button
+        type="button"
+        class="pink-button safe20-next"
+        onclick="showPage(23)"
+      >
+        Popatrz, jak ja Cię widzę ➔
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const loveLines = [];
+
+  for (let i = 1; i <= 100000; i++) {
+    loveLines.push(`Kocham Cię ${i}% ❤️`);
+  }
+
+  document.getElementById("loveLines").textContent = loveLines.join("\n");
+</script>
+
+<section id="page23" class="page" style="
+  display: none;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 28px 18px;
+  text-align: center;
+  color: #111;
+  background: linear-gradient(180deg, #fff0f6, #ffe1ec);
+">
+  <h1 style="
+    margin: 8px 0 24px;
+    font-size: clamp(22px, 4vw, 32px);
+  ">
+    Tak ja Cię widzę:
+  </h1>
+
+  <img
+    src="nasze19.jpg"
+    alt="Zdjęcie pokazujące, jak go widzisz"
+    style="
+      display: block;
+      width: min(88vw, 850px);
+      max-height: 65vh;
+      object-fit: contain;
+      margin: 0 auto 24px;
+      border-radius: 18px;
+    "
+  >
+
+  <button
+    type="button"
+    class="pink-button safe20-next page23-button"
+    onclick="showPage(24)"
+  >
+    Jesteś może głodny? ➔
+  </button>
+</section>
+
+<style>
+  #page24 {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 28px 18px;
+    background: linear-gradient(180deg, #fff0f6, #ffe1ec);
+  }
+
+  #page24 .page24-content {
+    width: min(100%, 850px);
+    margin: 0 auto;
+  }
+
+  #page24 .page24-title {
+    margin: 0 0 24px;
+    color: #222;
+    text-align: center;
+    font-size: clamp(24px, 4vw, 36px);
+  }
+
+  #page24 .page24-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(12px, 3vw, 24px);
+  }
+
+  #page24 .choice-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  #page24 .choice-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  #page24 .choice-card:hover,
+  #page24 .choice-card.is-active {
+    z-index: 1;
+    transform: scale(1.025);
+    box-shadow: 0 0 24px 7px rgba(255, 83, 157, 0.65);
+  }
+
+  #page24 .choice-card:hover img,
+  #page24 .choice-card.is-active img {
+    filter: brightness(1.08);
+  }
+
+  #page24 .choice-actions {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 14px 15px;
+    box-sizing: border-box;
+    background: rgba(40, 15, 28, 0.22);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  #page24 .choice-card:hover .choice-actions,
+  #page24 .choice-card.is-active .choice-actions {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #page24 .page24-pink-button {
+    border: 0;
+    border-radius: 999px;
+    padding: 12px 22px;
+    color: white;
+    background: #d94b91;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(120, 30, 75, 0.28);
+    animation: page24-pulse 1.5s infinite;
+  }
+
+  #page24 .page24-pink-button:hover {
+    background: #c93c82;
+  }
+
+  #page24 .choice-card.is-confirming .choose-button {
+    display: none;
+  }
+
+  #page24 .page24-confirm {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(82%, 280px);
+    padding: 14px;
+    box-sizing: border-box;
+    border-radius: 18px;
+    color: #292029;
+    background: rgba(255, 244, 249, 0.97);
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(50, 10, 30, 0.25);
+    transform: translate(-50%, -50%);
+  }
+
+  #page24 .page24-confirm p {
+    margin: 0 0 12px;
+    font-weight: bold;
+  }
+
+  #page24 .page24-confirm-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  #page24 .page24-confirm button {
+    min-width: 76px;
+    border: 0;
+    border-radius: 999px;
+    padding: 9px 16px;
+    color: white;
+    background: #d94b91;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  #page24 .page24-confirm button:hover {
+    background: #c93c82;
+  }
+
+  #page24 .page24-next {
+    display: none;
+    margin: 24px auto 0;
+  }
+
+  #page24.page24-shake {
+    animation: page24-shake 0.12s linear 10;
+  }
+
+  #page24.page24-locked .choice-card {
+    pointer-events: none;
+  }
+
+  #page24-wrong-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgba(45, 20, 35, 0.28);
+  }
+
+  #page24-wrong-panel {
+    width: min(100%, 360px);
+    padding: 22px;
+    box-sizing: border-box;
+    border-radius: 22px;
+    background: white;
+    color: #30232b;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(50, 10, 30, 0.28);
+  }
+
+  #page24-wrong-panel p {
+    margin: 0 0 14px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .page24-flying-emoji {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: var(--start-x);
+    pointer-events: none;
+    font-size: clamp(26px, 5vw, 48px);
+    animation: page24-fall 5.2s ease-in forwards;
+    animation-delay: var(--delay);
+  }
+
+  @keyframes page24-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+  }
+
+  @keyframes page24-shake {
+    0% { transform: translate(0, 0) rotate(0); }
+    25% { transform: translate(-4px, 2px) rotate(-0.3deg); }
+    50% { transform: translate(4px, -2px) rotate(0.3deg); }
+    75% { transform: translate(-3px, -1px) rotate(-0.2deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+  }
+
+  @keyframes page24-fall {
+  from {
+    opacity: 1;
+    transform: translate(0, 0) rotate(-12deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(var(--move-x), calc(100vh + 120px)) rotate(18deg);
+  }
+}
+
+  @media (prefers-reduced-motion: reduce) {
+    #page24 .page24-pink-button {
+      animation: none;
+    }
+  }
+
+#page24-success-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100001;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(45, 20, 35, 0.28);
+}
+
+.page24-success-panel {
+  position: relative;
+  width: min(100%, 360px);
+  padding: 28px 42px;
+  box-sizing: border-box;
+  border-radius: 22px;
+  background: white;
+  color: #30232b;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(50, 10, 30, 0.28);
+}
+
+.page24-success-panel p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.page24-success-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  color: #30232b;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+#page25 {
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #fff0f6, #ffe1ec);
+}
+
+#page25 .page25-content {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 24px 18px;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  justify-items: center;
+  gap: 18px;
+}
+
+#page25 .page25-video {
+  display: block;
+  width: min(900px, 94vw);
+  max-height: 72vh;
+  align-self: center;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(120, 30, 75, 0.2);
+}
+
+#page25 .page25-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 22px;
+  color: white;
+  background: #d94b91;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(120, 30, 75, 0.28);
+  animation: page25-pulse 1.5s infinite;
+}
+
+#page25 .page25-button:hover {
+  background: #c93c82;
+}
+
+@keyframes page25-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #page25 .page25-button {
+    animation: none;
+  }
+}
+
+</style>
+
+<section id="page24" class="page" style="display: none;">
+  <div class="page24-content">
+    <h1 class="page24-title">Wybierz, co dziś chcesz zjeść</h1>
+
+    <div class="page24-grid">
+      <div class="choice-card" data-correct="false">
+        <img src="nasze20.jpg" alt="Pierwsza opcja">
+        <div class="choice-actions">
+          <button type="button" class="page24-pink-button choose-button">
+            Wybieram to
+          </button>
+          <div class="page24-confirm">
+            <p>Na pewno chcesz to wybrać?</p>
+            <div class="page24-confirm-buttons">
+              <button type="button" class="yes-button">Tak</button>
+              <button type="button" class="no-button">Nie</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="choice-card" data-correct="false">
+        <img src="nasze21.jpg" alt="Druga opcja">
+        <div class="choice-actions">
+          <button type="button" class="page24-pink-button choose-button">
+            Wybieram to
+          </button>
+          <div class="page24-confirm">
+            <p>Na pewno chcesz to wybrać?</p>
+            <div class="page24-confirm-buttons">
+              <button type="button" class="yes-button">Tak</button>
+              <button type="button" class="no-button">Nie</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="choice-card" data-correct="false">
+        <img src="nasze22.jpg" alt="Trzecia opcja">
+        <div class="choice-actions">
+          <button type="button" class="page24-pink-button choose-button">
+            Wybieram to
+          </button>
+          <div class="page24-confirm">
+            <p>Na pewno chcesz to wybrać?</p>
+            <div class="page24-confirm-buttons">
+              <button type="button" class="yes-button">Tak</button>
+              <button type="button" class="no-button">Nie</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="choice-card" data-correct="true">
+        <img src="nasze23.jpg" alt="Makaron">
+        <div class="choice-actions">
+          <button type="button" class="page24-pink-button choose-button">
+            Wybieram to
+          </button>
+          <div class="page24-confirm">
+            <p>Na pewno chcesz to wybrać?</p>
+            <div class="page24-confirm-buttons">
+              <button type="button" class="yes-button">Tak</button>
+              <button type="button" class="no-button">Nie</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="page24-pink-button page24-next"
+      id="page24-next"
+      onclick="showPage(25)"
+    >
+      Zobacz Tik-Toka ➔
+    </button>
+  </div>
+</section>
+
+<div id="page24-wrong-overlay">
+  <div id="page24-wrong-panel">
+    <p>Bardzo mnie pozłościłeś,<br>tego Ci nie pozwalam wybrać.</p>
+    <button type="button" class="page24-pink-button" id="page24-retry">
+      Spróbuj ponownie 🔄
+    </button>
+  </div>
+</div>
+<div id="page24-success-overlay">
+  <div class="page24-success-panel">
+    <button
+      type="button"
+      id="page24-success-close"
+      class="page24-success-close"
+      aria-label="Zamknij"
+    >&times;</button>
+
+    <p>Dokładnie Tak, a jeśli się dowiem, że<br>wybrałeś coś innego to ojj<br>będzię kara. ❤️</p>
+  </div>
+</div>
+
+<section id="page25" class="page" style="display: none;">
+  <div class="page25-content">
+    <video class="page25-video" controls playsinline>
+      <source src="film2.mp4" type="video/mp4">
+      Twoja przeglądarka nie obsługuje odtwarzania filmów.
+    </video>
+
+    <button
+      type="button"
+      class="tiktok-pulse-button"
+      onclick="showPage(26)"
+    >
+      Zobacz drugiego Tik-Toka ➔
+    </button>
+  </div>
+</section>
+
+<section id="page26" class="page" style="display: none;">
+  <div class="page25-content">
+    <video class="page25-video" controls playsinline>
+      <source src="film3.mp4" type="video/mp4">
+      Twoja przeglądarka nie obsługuje odtwarzania filmów.
+    </video>
+
+    <button
+      type="button"
+      class="tiktok-pulse-button"
+      onclick="showPage(27)"
+    >
+      Zobacz trzeciego Tik-Toka ➔
+    </button>
+  </div>
+</section>
+
+<style>
+  @keyframes gentlePulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 4px 12px rgba(190, 45, 110, 0.3);
+    }
+    50% {
+      transform: scale(1.07);
+      box-shadow: 0 7px 22px rgba(190, 45, 110, 0.55);
+    }
+  }
+
+  .tiktok-pulse-button {
+    display: inline-block;
+    border: none;
+    border-radius: 999px;
+    padding: 11px 20px;
+    background: #e96a9f;
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    animation: gentlePulse 1.4s ease-in-out infinite;
+  }
+</style>
+
+<section id="page27" class="page"
+  style="background: linear-gradient(135deg, #fff7fb, #fce7f1);">
+  <div style="
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 30px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  ">
+    <video
+      src="film4.mp4"
+      controls
+      playsinline
+      style="width: min(88vw, 850px); max-height: 70vh; border-radius: 18px;"
+    ></video>
+
+    <button
+      type="button"
+      class="tiktok-pulse-button"
+      onclick="showPage(28)"
+    >
+      Zobacz czwartego Tik-Toka ➜
+    </button>
+  </div>
+</section>
+
+<section id="page28" class="page"
+  style="background: linear-gradient(135deg, #fff7fb, #fce7f1);">
+  <div style="
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 30px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  ">
+
+<p style="text-align: center; color: #222; font-size: 20px; margin: 0 0 8px;">
+  Tak przy okazji, bo zaraz jest...
+</p>
+
+    <video
+      src="film5.mp4"
+      controls
+      playsinline
+      style="width: min(88vw, 850px); max-height: 70vh; border-radius: 18px;"
+    ></video>
+
+    <button
+      type="button"
+      class="tiktok-pulse-button"
+      onclick="showPage(16)"
+    >
+      ? ➜
+    </button>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const page = document.getElementById("page24");
+    if (!page) return;
+
+    const cards = page.querySelectorAll(".choice-card");
+    const wrongOverlay = document.getElementById("page24-wrong-overlay");
+    const retryButton = document.getElementById("page24-retry");
+    const successOverlay = document.getElementById("page24-success-overlay");
+const successClose = document.getElementById("page24-success-close");
+
+successClose.addEventListener("click", () => {
+  successOverlay.style.display = "none";
+});
+    const nextButton = document.getElementById("page24-next");
+    let animationRunning = false;
+
+    function launchEmojis(emojiList, count) {
+  const spawnWindow = 3300;
+  const fallDuration = 4500;
+  const laneWidth = 56;
+  const columns = Math.max(1, Math.floor(window.innerWidth / laneWidth));
+  const lastUsed = Array(columns).fill(-Infinity);
+  let created = 0;
+
+  function spawnNext() {
+    if (created >= count) return;
+
+    const now = performance.now();
+    const availableLanes = [];
+
+    for (let lane = 0; lane < columns; lane++) {
+      if (now - lastUsed[lane] >= 260) {
+        availableLanes.push(lane);
+      }
+    }
+
+    if (availableLanes.length === 0) {
+      setTimeout(spawnNext, 30);
+      return;
+    }
+
+    const lane =
+      availableLanes[Math.floor(Math.random() * availableLanes.length)];
+    lastUsed[lane] = now;
+
+    const emoji = document.createElement("span");
+    emoji.className = "page24-flying-emoji";
+    emoji.textContent =
+      emojiList[Math.floor(Math.random() * emojiList.length)];
+
+    const laneSize = window.innerWidth / columns;
+    const x = lane * laneSize + laneSize / 2 + (Math.random() * 18 - 9);
+
+    emoji.style.setProperty("--start-x", x + "px");
+    emoji.style.setProperty("--move-x", (Math.random() * 50 - 25) + "px");
+    emoji.style.setProperty("--fall-duration", fallDuration + "ms");
+
+    document.body.appendChild(emoji);
+    setTimeout(() => emoji.remove(), fallDuration + 200);
+
+    created++;
+
+    if (created < count) {
+      const averageDelay = spawnWindow / count;
+      const nextDelay = averageDelay * (0.55 + Math.random());
+      setTimeout(spawnNext, nextDelay);
+    }
+  }
+
+  spawnNext();
+}
+
+    function handleChoice(card) {
+      if (animationRunning) return;
+
+      animationRunning = true;
+      page.classList.add("page24-locked");
+
+      cards.forEach((item) => {
+        item.classList.remove("is-active", "is-confirming");
+        item.querySelector(".page24-confirm").style.display = "none";
+      });
+
+      if (card.dataset.correct === "true") {
+        launchEmojis(["❤️", "💗", "💕", "💖", "💞", "💘"], 70);
+
+        setTimeout(() => {
+          nextButton.style.display = "block";
+          successOverlay.style.display = "flex";
+        }, 5200);
+      } else {
+  page.classList.remove("page24-shake");
+  void page.offsetWidth;
+
+  requestAnimationFrame(() => {
+    launchEmojis(["😠", "😤", "😡", "🤬", "💥", "💣"], 70);
+  page.classList.add("page24-shake");
+
+  });
+
+  setTimeout(() => {
+    page.classList.remove("page24-shake");
+  }, 5200);
+
+  setTimeout(() => {
+    wrongOverlay.style.display = "flex";
+  }, 8000);
+}
+    }
+    cards.forEach((card) => {
+      const confirmBox = card.querySelector(".page24-confirm");
+
+      card.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse") {
+          card.classList.add("is-active");
+        }
+      });
+
+      card.addEventListener("pointerleave", (event) => {
+        if (
+          event.pointerType === "mouse" &&
+          !card.classList.contains("is-confirming")
+        ) {
+          card.classList.remove("is-active");
+        }
+      });
+
+      card.addEventListener("click", (event) => {
+        if (!event.target.closest("button")) {
+          card.classList.add("is-active");
+        }
+      });
+
+      card.querySelector(".choose-button").addEventListener("click", (event) => {
+        event.stopPropagation();
+        card.classList.add("is-confirming", "is-active");
+        confirmBox.style.display = "block";
+      });
+
+      card.querySelector(".no-button").addEventListener("click", (event) => {
+        event.stopPropagation();
+        card.classList.remove("is-confirming");
+        confirmBox.style.display = "none";
+        card.classList.add("is-active");
+      });
+
+      card.querySelector(".yes-button").addEventListener("click", (event) => {
+        event.stopPropagation();
+        confirmBox.style.display = "none";
+        handleChoice(card);
+      });
+    });
+
+    retryButton.addEventListener("click", () => {
+      wrongOverlay.style.display = "none";
+      page.classList.remove("page24-locked");
+
+      cards.forEach((card) => {
+        card.classList.remove("is-active", "is-confirming");
+        card.querySelector(".page24-confirm").style.display = "none";
+      });
+
+      animationRunning = false;
+    });
+  })();
+</script>
+
+
+
+<script>
+  function openSafe20Room() {
+    document.getElementById("safe20DoorView").style.display = "none";
+    document.getElementById("safe20RoomView").style.display = "block";
+  }
+
+  function showSafe20Message(type) {
+    const messages = {
+      hug: "Wirtualne przytulenie ode mnie — jestem przy Tobie.",
+      kiss: "Przesyłam Ci buziaka. Mam nadzieję, że choć trochę poprawi Ci humor.",
+      smile: "Pomyśl o czymś miłym. Twój uśmiech zawsze daje mi dużo szczęścia.",
+      talk: "Jeśli chcesz pogadać, jestem tutaj i chętnie Cię wysłucham.",
+      memory: "Pamiętaj, że Cię kocham i że jesteś dla mnie bardzo ważny.",
+      calm: "Zatrzymaj się na chwilkę. Nie musisz teraz niczego rozwiązywać. Po prostu odetchnij."
+    };
+
+    const messageBox = document.getElementById("safe20Message");
+    messageBox.textContent = messages[type];
+    messageBox.style.display = "block";
+  }
+</script>
 
 </main>
 
@@ -2719,8 +4171,9 @@ function clickTorch() {
     if (torchClicks === 1) {
         document.body.classList.add("glow-stage-1");
         if (torch) {
-            const randomX = Math.floor(Math.random() * (window.innerWidth - 150));
-            const randomY = Math.floor(Math.random() * (window.innerHeight - 150));
+            const maxX = Math.max(0, window.innerWidth - torch.offsetWidth);
+            const randomX = Math.floor(torch.offsetWidth / 2 + Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * Math.max(0, window.innerHeight - torch.offsetHeight));
             torch.style.position = "fixed";
             torch.style.left = randomX + "px";
             torch.style.top = randomY + "px";
@@ -2731,8 +4184,9 @@ function clickTorch() {
     if (torchClicks === 2) {
         document.body.classList.add("glow-stage-2");
         if (torch) {
-            const randomX = Math.floor(Math.random() * (window.innerWidth - 150));
-            const randomY = Math.floor(Math.random() * (window.innerHeight - 150));
+            const maxX = Math.max(0, window.innerWidth - torch.offsetWidth);
+            const randomX = Math.floor(torch.offsetWidth / 2 + Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * Math.max(0, window.innerHeight - torch.offsetHeight));
             torch.style.position = "fixed";
             torch.style.left = randomX + "px";
             torch.style.top = randomY + "px";
@@ -2744,7 +4198,11 @@ function clickTorch() {
         document.body.classList.add("glow-stage-3");
 
         if (torch) {
-            torch.style.transform = "translateX(-50%) rotate(-30deg)";
+            if (parseFloat(torch.style.left) > window.innerWidth / 2) {
+  torch.style.transform = "translateX(-50%) rotate(-30deg)";
+} else {
+  torch.style.transform = "translateX(-50%) rotate(30deg)";
+}
             torch.style.opacity = "0";
 
             setTimeout(function () {
@@ -2815,7 +4273,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function checkPin() {
       if (typedPin === correctPin) {
-        showPage(2);
+        showPage(18);
         return;
       }
 
@@ -2872,11 +4330,11 @@ document.querySelectorAll(".planet-pill-label").forEach(label => label.remove())
     } else if (pageNumber === 8) {
         document.title = "Na ile % Cię kocham?";
     } else if (pageNumber === 9) {
-        document.title = "Akwarium ❤️ ";
+        document.title = "Akwarium";
     } else if (pageNumber === 10) {
         document.title = "Nasze Wspomnienia 📸";
     }else if (pageNumber === 11) {
-        document.title = "Wiersze";
+        document.title = "Wiersze ♡";
     }else if (pageNumber === 12) {
         document.title = "Quiz";
     }else if (pageNumber === 13) {
@@ -2884,10 +4342,34 @@ document.querySelectorAll(".planet-pill-label").forEach(label => label.remove())
     }else if (pageNumber === 14) {
         document.title = "Kapsuła czasu";
     }else if (pageNumber === 15) {
-    document.title = "Podróż przez Układ Słoneczny 🚀";
+    document.title = "Układ Słoneczny";
     setTimeout(addPlanetPillLabels, 150);
     }else if (pageNumber === 16) {
         document.title = "Strona finałowa";
+    }else if (pageNumber === 17) {
+        document.title = "Sekretna strona";
+    }else if (pageNumber === 18) {
+        document.title = "Spis treści 📜🖋️";
+    }else if (pageNumber === 19) {
+        document.title = "Mandacik 📄";
+    }else if (pageNumber === 20) {
+        document.title = "Bezpieczna Przystań 💚";
+    }else if (pageNumber === 21) {
+        document.title = "Dziękuję, że jesteś 💕";
+    }else if (pageNumber === 22) {
+        document.title = "Kocham Cię ❤️";
+    }else if (pageNumber === 23) {
+        document.title = "Tak ja Cię widzę";
+    }else if (pageNumber === 24) {
+        document.title = "Wybierz, co dziś chcesz zjeść";
+    }else if (pageNumber === 25) {
+        document.title = "Tik-Tok 🎶";
+    }else if (pageNumber === 26) {
+        document.title = "Tik-Tok 🎶";
+    }else if (pageNumber === 27) {
+        document.title = "Tik-Tok 🎶";
+    }else if (pageNumber === 28) {
+        document.title = "Tik-Tok 🎶";
     }
     }
 
@@ -3386,6 +4868,98 @@ startErrorStorm();
         transform: translateY(105vh) translateX(-35px) rotate(360deg);
     }
 }
+
+.safe20-next {
+  animation: safe20Pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes safe20Pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 70, 150, 0.35);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 18px 6px rgba(255, 70, 150, 0.65);
+  }
+}
+
+.page23-button {
+  transition: filter 0.2s ease;
+}
+
+.page23-button:hover {
+  filter: brightness(1.15);
+}
+
+#page22,
+#page22 * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+#page22::-webkit-scrollbar,
+#page22 *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+#page26 {
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #fff0f6, #ffe1ec);
+}
+
+#page26 .page25-content {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 24px 18px 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+#page25 .page25-content {
+  gap: 12px !important;
+}
+
+#page25 .page25-content {
+  gap: 8px !important;
+}
+
+#page25 .page25-content,
+#page26 .page25-content,
+#page27 > div,
+#page28 > div {
+  gap: 24px !important;
+}
+
+#page25 .page25-video {
+  margin-bottom: 0 !important;
+}
+
+#page26 .page25-video {
+  display: block;
+  width: min(900px, 94vw);
+  max-height: 68vh;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(120, 30, 75, 0.2);
+}
+
+#page26 .page25-button:hover {
+  background: #c93c82;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #page26 .page25-button {
+    animation: none;
+  }
+}
+
 </style>
 
 <script>
@@ -4199,7 +5773,7 @@ function displayQuizResults() {
   } else {
     if (quizScore >= 12) {
       msgEl.innerText = "Zdałeś rundę bonusową na medal! ❤️";
-      actionBtn.innerText = "Zobacz misia";
+      actionBtn.innerText = "Zobacz misia ➔ ";
       actionBtn.onclick = () => {
         if (typeof showPage === "function") {
           showPage(13);
@@ -4495,16 +6069,16 @@ function triggerTrap() {
   function renderVenusStage1() {
     const body = document.getElementById("planetModalBody");
     body.innerHTML = `
-      <div style="font-size: 12px; color: \#ffb6c1; font-weight: bold; margin-bottom: 6px;">WENUS • KROK 1/4</div>
+      <div style="font-size: 12px; color: #ffb6c1; font-weight: bold; margin-bottom: 6px;">WENUS • KROK 1/4</div>
       <p style="font-size: 14px; margin-bottom: 16px;">Co czuję, będąc przy Tobie?</p>
       <div style="display: flex; flex-direction: column; gap: 8px;">
-        <button onclick="checkVenus1(this, false)" style="background: rgba(255,255,255,0.08); color: \#fff; border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; cursor: pointer;">Złość</button>
-        <button onclick="checkVenus1(this, true)" style="background: rgba(255,255,255,0.08); color: \#fff; border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; cursor: pointer;">Radość</button>
-        <button onclick="checkVenus1(this, false)" style="background: rgba(255,255,255,0.08); color: \#fff; border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; cursor: pointer;">Wstyd</button>
-        <button onclick="checkVenus1(this, false)" style="background: rgba(255,255,255,0.08); color: \#fff; border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; cursor: pointer;">Strach</button>
-        <button onclick="checkVenus1(this, false)" style="background: rgba(255,255,255,0.08); color: \#fff; border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; cursor: pointer;">Smutek</button>
+        <button onclick="checkVenus1(this, false)" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; cursor: pointer;">Złość</button>
+        <button onclick="checkVenus1(this, true)" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; cursor: pointer;">Radość</button>
+        <button onclick="checkVenus1(this, false)" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; cursor: pointer;">Wstyd</button>
+        <button onclick="checkVenus1(this, false)" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; cursor: pointer;">Strach</button>
+        <button onclick="checkVenus1(this, false)" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; cursor: pointer;">Smutek</button>
       </div>
-      <div id="venusMsg" style="color: \#ff6b81; font-size: 12px; margin-top: 10px; min-height: 16px;"></div>
+      <div id="venusMsg" style="color: #ff6b81; font-size: 12px; margin-top: 10px; min-height: 16px;"></div>
     `;
   }
 
@@ -4513,7 +6087,7 @@ function triggerTrap() {
       renderVenusStage2();
     } else {
       document.getElementById("venusMsg").innerText = "To nie to uczucie. Spróbuj jeszcze raz.";
-      btn.style.borderColor = "\#ff4757";
+      btn.style.borderColor = "#ff4757";
     }
   }
 
@@ -4697,13 +6271,13 @@ function renderMarsBonusStage() {
     '<h3 style="color: #ffb6c1; margin-bottom: 8px; font-size: 18px;">Mars- Wybierz kartę bonusową</h3>' +
     '<p style="font-size: 13px; color: #d1d8e0; margin-bottom: 18px;">Wybierz jedną z trzech kart, aby zobaczyć co się pod nią kryje:</p>' +
     '<div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 15px;">' +
-      '<div onclick="selectMarsBonus(\'speed\', this)" style="flex: 1; max-width: 105px; height: 120px; background: rgba(255,255,255,0.06); border: 2px dashed #ffb6c1; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; padding: 6px;">' +
+      '<div onclick="selectMarsBonus(`speed`, this)" style="flex: 1; max-width: 105px; height: 120px; background: rgba(255,255,255,0.06); border: 2px dashed #ffb6c1; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; padding: 6px;">' +
         '<span style="font-size: 32px;">?</span><span style="font-size: 12px; color: #ffb6c1; margin-top: 6px; font-weight: bold;">Karta 1</span>' +
       '</div>' +
-      '<div onclick="selectMarsBonus(\'lifelines\', this)" style="flex: 1; max-width: 105px; height: 120px; background: rgba(255,255,255,0.06); border: 2px dashed #ffb6c1; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; padding: 6px;">' +
+      '<div onclick="selectMarsBonus(`lifelines`, this)" style="flex: 1; max-width: 105px; height: 120px; background: rgba(255,255,255,0.06); border: 2px dashed #ffb6c1; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; padding: 6px;">' +
         '<span style="font-size: 32px;">?</span><span style="font-size: 12px; color: #ffb6c1; margin-top: 6px; font-weight: bold;">Karta 2</span>' +
       '</div>' +
-      '<div onclick="selectMarsBonus(\'extra_life\', this)" style="flex: 1; max-width: 105px; height: 120px; background: rgba(255,255,255,0.06); border: 2px dashed #ffb6c1; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; padding: 6px;">' +
+      '<div onclick="selectMarsBonus(`extra_life`, this)" style="flex: 1; max-width: 105px; height: 120px; background: rgba(255,255,255,0.06); border: 2px dashed #ffb6c1; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; padding: 6px;">' +
         '<span style="font-size: 32px;">?</span><span style="font-size: 12px; color: #ffb6c1; margin-top: 6px; font-weight: bold;">Karta 3</span>' +
       '</div>' +
     '</div>' +
