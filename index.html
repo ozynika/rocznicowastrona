@@ -7206,6 +7206,19 @@ window.addEventListener("resize", function() {
   setTimeout(addPlanetPillLabels, 100);
 });
 
+// Przesuwaj podpisy razem z planetami podczas przewijania
+let aktualizacjaPodpisowWToku = false;
+
+document.addEventListener("scroll", function() {
+  if (aktualizacjaPodpisowWToku) return;
+
+  aktualizacjaPodpisowWToku = true;
+  requestAnimationFrame(function() {
+    addPlanetPillLabels();
+    aktualizacjaPodpisowWToku = false;
+  });
+}, true);
+
 </script>
 
 <div id="rebootScreen">
